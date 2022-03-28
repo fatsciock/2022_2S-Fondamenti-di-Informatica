@@ -9,6 +9,7 @@ int main(void) {
     printf("2. a=%3d b=%3d\n", a, b);
     b= ++a;
     printf("3. a=%3d b=%3d\n", a, b);
-    printf("4. %d\n", ++a + b ++);
+    printf("4. %d\n", ++a + b++);
+    printf("5. a=%3d b=%3d\n", a, b);
     return 0;
 }
