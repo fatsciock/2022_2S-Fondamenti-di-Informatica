@@ -19,7 +19,7 @@ int main(void) {
 }
 
 unsigned int is_prime(unsigned int n) {
-    for (unsigned int i = 3; i < n; i += 2) {
+    for (unsigned int i = 2; i < n; i++) {
         if (n % i == 0) {
             return FALSE;
         }
