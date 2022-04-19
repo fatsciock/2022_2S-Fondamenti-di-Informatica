@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 char *remove_element(char *string, char element);
 
@@ -21,23 +22,12 @@ int main(void) {
 }
 
 char *remove_element(char *string, char element) {
-    int lenght = 0;
-    for (int i=0; ; i++) {
-        if (string[i] == '\0') {
-            break;
-        } else {
-            if (string[i] != element) {
-                lenght++;
-            }
-        }
-    }
-    char *result = (char *)malloc(++lenght*sizeof(char));
-    int i = 0;
-    int j = 0;
-    do {
+    int length = strlen(string) + 1;
+    char *result = (char *) malloc(length * sizeof(char));
+    for (int i = 0, j = 0; i <= length; i++) {
         if (string[i] != element) {
             result[j++] = string[i];
         }
-    } while(string[i++] != '\0');
+    }
     return result;
 }

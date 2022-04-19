@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <./utils.h>
+#include "./utils.h"
 
 int count_of_m(int n, int m);
 void find_n_of_m(int n, int m, int *results);
@@ -32,13 +32,7 @@ int main(void) {
 
 
 int count_of_m(int n, int m) {
-    int count = 0;
-    for (int i = 1; i < n; i++) {
-        if (i % m == 0) {
-            count++;
-        }
-    }
-    return count;
+    return n / m;
 }
 
 void find_n_of_m(int n, int m, int *results) {

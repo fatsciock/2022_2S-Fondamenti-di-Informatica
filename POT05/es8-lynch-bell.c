@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <./utils.h>
+#include "./utils.h"
 
 int is_lynch_bell(int x);
 int count_lynch_bell(int start, int end);

@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <./utils.h>
+#include "./utils.h"
 
 #define N 10
 #define MIN 0
 #define MAX 100
 
 double *sort_double(double *array, int size);
-double min_double(double *array, int size);
+void sort_double_array_in_place(double *array, int size);
+int min_double(double *array, int size, int start_index);
 double *remove_element(double *array, int size, double element);
 void array_cp(double *array, int start_incl, int end_excl, double *result);
 double *array_copy(double *array, int start_incl, int end_excl);
-
 
 int main(void) {
     double *array = rand_double_array(N, MIN, MAX);
@@ -28,46 +28,33 @@ int main(void) {
     return 0;
 }
 
+int min_double(double *array, int size, int start_index) {
+    int min_index = start_index;
+    double min = array[start_index];
+
+    for (int i = start_index; i < size; i++) {
+        if (array[i] < min) {
+            min = array[i];
+            min_index = i;
+        }
+    }
+
+    return min_index;
+}
+
+void sort_double_array_in_place(double *array, int size) {
+    for (int i = 0; i < size; i++) {
+        int min_index = min_double(array, size, i);
+        double tmp = array[min_index];
+        array[min_index] = array[i];
+        array[i] = tmp;
+    }
+}
+
 double *sort_double(double *array, int size) {
-    double *result = (double *)malloc(size*sizeof(double));
-    double *copy = array_copy(array, 0, size);
-    for (int i=0; i<size; i++) {
-        double min = min_double(copy, size - i);
-        result[i] = min;
-        double *new_copy = remove_element(copy, size-i, min);
-        
-        free(copy);
-        copy = new_copy;
-        free(new_copy);
-    }
-
-    free(copy);
+    double *result = array_copy(array, 0, size);
+    sort_double_array_in_place(result, size);
     return result;
-
-}
-
-double min_double(double *array, int size) {
-    double result = INT64_MAX;
-    for (int i=0; i < size; i++) {
-        if (result > array[i]){
-            result = array[i];
-        }
-    }
-    return result;
-}
-
-double *remove_element(double *array, int size, double element) {
-    double *result = (double *)malloc((size-1)*sizeof(double));
-    int found = 0;
-    for (int i=0; i<size; i++){
-        if (found == 0 && array[i] == element) {
-            found = 1;
-        } else {
-            result[i-found] =array[i];
-        }
-    }
-    return result;
-
 }
 
 void array_cp(double *array, int start_incl, int end_excl, double *result) {

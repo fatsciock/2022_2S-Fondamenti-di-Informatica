@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <./utils.h>
+#include "./utils.h"
 
 void find_even(int *array, int size, int *result);
 int *get_even(int *array, int size);

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <./utils.h>
+#include "./utils.h"
 
 void array_cp(double *array, int start_incl, int end_excl, double *result);
 double *array_copy(double *array, int start_incl, int end_excl);
