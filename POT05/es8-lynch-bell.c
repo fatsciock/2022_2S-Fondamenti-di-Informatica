@@ -34,11 +34,16 @@ int main(void) {
 
 int is_lynch_bell(int x) {
     const int original = x;
+    int digits[10];
+    for (int i=0; i<10; i++){
+        digits[i]=0;
+    }
     for (; x > 0; x /= 10) {
         int digit = x % 10;
-        if (digit != 0 && (original % digit != 0)) {
+        if (digit == 0 || (original % digit != 0) || digits[digit]) {
             return 0; // false
         }
+        digits[digit] = 1;
     }
     return 1; // true
 }
