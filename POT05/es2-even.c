@@ -36,6 +36,7 @@ void find_even(int *array, int size, int *result) {
     for (int i = 0; i < size; i++) {
         if (i % 2 == 0) {
             *result = *(array + i);
+            /* *result = array[i]; */
             result++;
         }
     }
