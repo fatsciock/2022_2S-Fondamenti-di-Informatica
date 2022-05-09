@@ -9,4 +9,5 @@ int main(void) {
     ptrC = ptrA;
     *ptrA = *ptrB + 1;
     printf("a = %d -- b = %d -- c = %d\n", a, b, c);
+    // a = 29 -- b = 28 -- c = -7
 }
