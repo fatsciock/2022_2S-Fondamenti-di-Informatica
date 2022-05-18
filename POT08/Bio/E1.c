@@ -33,7 +33,43 @@
    erogato.
 */
 int monete(int c) {
-    // TODO
+  int cont = 0, resto = c;
+  while(resto>0) {
+    if(resto - 50 >= 0){
+      resto -= 50;
+      cont++;
+    } else if(resto - 20 >= 0){
+      resto -= 20;
+      cont++;
+    } else if(resto - 10 >= 0){
+      resto -= 10;
+      cont++;
+    } else if(resto - 5 >= 0){
+      resto -= 5;
+      cont++;
+    } else if(resto - 2 >= 0){
+      resto -= 2;
+      cont++;
+    } else if(resto - 1 >= 0){
+      resto -= 1;
+      cont++;
+    }
+  }
+  return cont;
+  /*
+  int m[] = {50, 20, 10, 5, 2, 1};
+    int i = 0; //m[i] e' il taglio della moneta che stiamo usando
+    int n = 0; //numero monete usate
+    while (c > 0) {
+        if (c >= m[i]) {
+            n++;
+            c -= m[i];
+        } else {
+            i++;
+        }
+    }
+    return n;
+  */
 }
 
 void test(int c, int expect) {

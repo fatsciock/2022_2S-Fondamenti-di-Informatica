@@ -18,8 +18,36 @@ Come riferimento si consideri che l'esecuzione del test
 (eseguita dal metodo main) deve riportare il risultato true.
 */
 
+int present(char a[], int n, char c) {
+    /*
+    for (; n > 0;) {
+        if (a[--n] == c) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+    */
+   for(int i=0; i<n; i++){
+       if (a[i] == c) {
+           return TRUE;
+       }
+   }
+   return FALSE;
+}
+
 char *f(char *s, char c[], int n) {
-    // TODO
+    char *out = (char *)malloc(strlen(s) + 1);
+    int i;
+    for (i = 0; i < strlen(s); i++) {
+        if (!present(c, n, s[i])) {
+            out[i] = s[i];
+        } else {
+            out[i] = '0';
+        }
+    }
+    out[i] = '\0';
+    printf("%s\n", out);
+    return out;
 }
 
 int test() {

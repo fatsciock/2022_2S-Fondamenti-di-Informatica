@@ -43,7 +43,29 @@ struct list *list_from_array(int v[], int n);
    necessariamente corretta.
 */
 void rimuovi_terzultimo(struct list *L) {
-    // TODO
+    int i, n = list_length(L);
+    struct list *tmp;
+
+    for (i = 0; i < n - 4; i++) {
+        L = L->next;
+    }
+    /* A questo punto, L punta al quartultimo elemento della
+       lista, cioe' quello immediatamente prima all'elemento
+       da rimuovere */
+    tmp = L->next->next;
+
+    /* Qui abbiamo la situazione seguente (il nodo da rimuovere
+       e' quello etichettato con X)
+
+       L---+         tmp---+
+           V               V
+         +---+   +---+   +---+   +---+
+      -->|   |-->| X |-->|   |-->|   |
+         +---+   +---+   +---+   +---+
+
+     */
+    free(L->next);
+    L->next = tmp;
 }
 
 /**
