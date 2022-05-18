@@ -230,6 +230,17 @@ struct list *list_duplicate(struct list *L) {
     }
 }
 
+struct list *list_duplicate_NO_RIC(struct list *L) {
+    int n = list_length(L);
+    int *tmp = (int*)malloc(n * sizeof(int));
+    struct list *res = NULL;
+    for(int i=0; i<n; i++) {
+        tmp[i] = L->val;
+        L = L->next;
+    }
+    return list_from_array(tmp, n);
+}
+
 /* [TODO] Restituisce 1 se e solo se le liste L1 e L2 hanno la stessa
    lunghezza, e contengono gli stessi valori nello stesso
    ordine. Questa funzione non deve modificare ne' L1 ne' L2. */
@@ -359,7 +370,8 @@ int main(void) {
      * Test delle funzioni list_duplicate() e list_equal()
      */
     printf("Duplico L1 in L5\n");
-    L5 = list_duplicate(L1);
+    L5 = list_duplicate_NO_RIC(L1);
+    printf("Lunghezza L5: %d\n", list_length(L5));
     printf("Lista L1: ");
     list_print(L1);
     printf("Lista L5: ");
